@@ -1,160 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio | Dheeraj Sree Sandupatla</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
-            color: #222;
-        }
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: #ffffff;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 10;
-        }
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            font-weight: 500;
-            color: #333;
-        }
-        header {
-            padding: 120px 30px 60px;
-            text-align: center;
-            background: linear-gradient(135deg, #6c63ff, #5ab9ea);
-            color: white;
-        }
-        header h1 { font-size: 48px; margin-bottom: 10px; }
-        header h2 { font-size: 22px; font-weight: 300; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dheeraj Sree Sandupatla | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
 
-        section {
-            max-width: 900px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h3 { font-size: 28px; margin-bottom: 20px; }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-        }
-        .skill-box {
-            padding: 15px;
-            background: #f1f1ff;
-            border-radius: 6px;
-            text-align: center;
-            font-weight: 500;
-        }
-        .exp-item, .edu-item, .project-item {
-            margin-bottom: 25px;
-        }
-        footer {
-            text-align: center;
-            padding: 40px;
-            margin-top: 40px;
-            color: #666;
-        }
-    </style>
+    /* NAVBAR */
+    nav {
+      width: 100%;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+    }
+    nav a {
+      color: #e2e8f0;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #38bdf8; }
+
+    /* HERO */
+    .hero {
+      padding: 180px 50px 120px;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+    .hero h2 {
+      margin-top: 10px;
+      font-size: 28px;
+      color: #38bdf8;
+    }
+    .hero p {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #94a3b8;
+    }
+
+    /* SECTIONS */
+    section {
+      width: 90%;
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 40px;
+      background: #1e293b;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      animation: fadeIn 1.5s ease;
+    }
+    h3 { font-size: 32px; margin-bottom: 20px; color: #38bdf8; }
+
+    /* SKILLS GRID */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+    .skill-box {
+      padding: 18px;
+      background: #0f172a;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 500;
+      border: 1px solid #334155;
+      transition: 0.3s;
+    }
+    .skill-box:hover {
+      background: #38bdf8;
+      color: #0f172a;
+      transform: translateY(-5px);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
+      margin-top: 40px;
+    }
+  </style>
 </head>
+
 <body>
-    <nav>
-        <div class="logo">Your Name</div>
-        <div>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">Dheeraj Sree Sandupatla</div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-    <header>
-        <h1>Your Name</h1>
-        <h2>Risk Analyst - Portfolio Forecasting</h2>
-        <p>Short tagline about who you are and what you do.</p>
-    </header>
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <h1>Dheeraj Sree Sandupatla</h1>
+    <h2>Risk Analyst – Portfolio Forecasting</h2>
+    <p>Transforming data into insights through cloud, analytics, and scalable engineering.</p>
+  </div>
 
-    <section id="about">
-        <h3>About Me</h3>
-        <p>Write a short 4–5 line professional summary about yourself here.</p>
-    </section>
+  <!-- ABOUT -->
+  <section id="about">
+    <h3>About Me</h3>
+    <p>Write your summary here — this box is fully ready for your content.</p>
+  </section>
 
-    <section id="skills">
-        <h3>Skills</h3>
-        <div class="skills-grid">
-            <div class="skill-box">Databricks</div>
-            <div class="skill-box">Python</div>
-            <div class="skill-box">SQL</div>
-            <div class="skill-box">Power BI</div>
-            <div class="skill-box">Excel</div>
-            <div class="skill-box">PostgreSQL</div>
-            <div class="skill-box">AWS</div>
-            <div class="skill-box">Docker</div>
-            <div class="skill-box">Kubernetes</div>
-            <div class="skill-box">SciKit Learn</div>
-            <div class="skill-box">Git</div>
-        </div>
-            <div class="skill-box">SQL</div>
-            <div class="skill-box">Power BI</div>
-            <div class="skill-box">Tableau</div>
-            <div class="skill-box">Azure</div>
-        </div>
-    </section>
+  <!-- SKILLS -->
+  <section id="skills">
+    <h3>Skills</h3>
+    <div class="skills-grid">
+      <div class="skill-box">Databricks</div>
+      <div class="skill-box">Python</div>
+      <div class="skill-box">SQL</div>
+      <div class="skill-box">Power BI</div>
+      <div class="skill-box">Excel</div>
+      <div class="skill-box">PostgreSQL</div>
+      <div class="skill-box">AWS</div>
+      <div class="skill-box">Docker</div>
+      <div class="skill-box">Kubernetes</div>
+      <div class="skill-box">SciKit Learn</div>
+      <div class="skill-box">Git</div>
+    </div>
+  </section>
 
-    <section id="experience">
-        <h3>Experience</h3>
-        <div class="exp-item">
-            <h4>Job Title — Company Name</h4>
-            <p><i>Jan 2023 – Present</i></p>
-            <ul>
-                <li>Write accomplishment or responsibility here.</li>
-                <li>Another bullet point.</li>
-            </ul>
-        </div>
-    </section>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h3>Experience</h3>
+    <p>Add your experience bullets later — section is ready.</p>
+  </section>
 
-    <section id="projects">
-        <h3>Projects</h3>
-        <div class="project-item">
-            <h4>Project Name</h4>
-            <p>Short description of what the project does and tools used.</p>
-            <a href="#">GitHub Link</a>
-        </div>
-    </section>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h3>Projects</h3>
+    <p>Your projects will look great here — add content anytime.</p>
+  </section>
 
-    <section id="education">
-        <h3>Education</h3>
-        <div class="edu-item">
-            <h4>Degree — University</h4>
-            <p><i>Year of Passing</i></p>
-        </div>
-    </section>
+  <!-- EDUCATION -->
+  <section id="education">
+    <h3>Education</h3>
+    <p>Fill your education details whenever you're ready.</p>
+  </section>
 
-    <section id="contact">
-        <h3>Contact</h3>
-        <p>Email: your.email@example.com</p>
-        <p>LinkedIn: <a href="#">Your LinkedIn</a></p>
-        <p>GitHub: <a href="#">Your GitHub</a></p>
-    </section>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h3>Contact</h3>
+    <p>Email: your.email@example.com</p>
+    <p>LinkedIn: your link</p>
+    <p>GitHub: github.com/dheeraj24797</p>
+  </section>
 
-    <footer>
-        © 2025 Your Name. All Rights Reserved.
-    </footer>
+  <footer>© 2025 Dheeraj Sree Sandupatla. All Rights Reserved.</footer>
 </body>
 </html>
