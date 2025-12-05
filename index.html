@@ -21,11 +21,39 @@
       box-sizing: border-box;
     }
 
+    :root {
+      /* DARK THEME */
+      --bg: #020617;
+      --bg-elevated: rgba(15, 23, 42, 0.96);
+      --card: #020617;
+      --border: #1f2937;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.35);
+      --accent-strong: #818cf8;
+      --shadow-strong: rgba(15,23,42,0.9);
+    }
+
+    body.light-theme {
+      --bg: #f5f5ff;
+      --bg-elevated: #ffffff;
+      --card: #f3f4ff;
+      --border: #d4d4ff;
+      --text-main: #0f172a;
+      --text-muted: #4b5563;
+      --accent: #2563eb;
+      --accent-soft: rgba(37,99,235,0.18);
+      --accent-strong: #9333ea;
+      --shadow-strong: rgba(148,163,184,0.5);
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #020617; /* very dark navy */
-      color: #e2e8f0;
+      background: var(--bg);
+      color: var(--text-main);
       overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
     }
 
     /* PARTICLE BACKGROUND */
@@ -34,32 +62,80 @@
       width: 100%;
       height: 100%;
       inset: 0;
+      z-index: -2;
+    }
+
+    /* FLOATING SHAPES */
+    .floating-shape {
+      position: fixed;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+      opacity: 0.5;
+      filter: blur(1px);
       z-index: -1;
+      animation: float 18s ease-in-out infinite alternate;
+    }
+
+    .floating-shape.shape-1 {
+      width: 260px;
+      height: 260px;
+      top: 8%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .floating-shape.shape-2 {
+      width: 320px;
+      height: 320px;
+      bottom: 2%;
+      right: 10%;
+      animation-delay: 4s;
+    }
+
+    .floating-shape.shape-3 {
+      width: 220px;
+      height: 220px;
+      bottom: 40%;
+      left: 35%;
+      animation-delay: 8s;
+    }
+
+    @keyframes float {
+      0%   { transform: translate3d(0,0,0); }
+      50%  { transform: translate3d(20px,-30px,0); }
+      100% { transform: translate3d(-20px,20px,0); }
     }
 
     /* NAVBAR */
     nav {
       width: 100%;
-      padding: 16px 48px;
+      padding: 12px 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: fixed;
       top: 0;
       z-index: 10;
-      background: rgba(15, 23, 42, 0.75);
+      background: rgba(15, 23, 42, 0.8);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid #1f2937;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    body.light-theme nav {
+      background: rgba(248,250,252,0.9);
     }
 
     .logo {
       font-weight: 700;
       letter-spacing: 0.05em;
-      color: #38bdf8;
+      color: var(--accent);
+      font-size: 1rem;
+      text-transform: uppercase;
     }
 
-    nav a {
-      color: #e2e8f0;
+    nav .nav-links a {
+      color: var(--text-main);
       text-decoration: none;
       margin-left: 24px;
       font-size: 0.95rem;
@@ -67,13 +143,37 @@
       transition: 0.3s;
     }
 
-    nav a:hover {
-      color: #38bdf8;
+    nav .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      margin-left: 16px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.7);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.3s;
+    }
+
+    body.light-theme .theme-toggle {
+      background: rgba(255,255,255,0.9);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
     }
 
     /* HERO SECTION */
     .hero {
-      padding: 160px 24px 120px;
+      padding: 150px 24px 110px;
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
@@ -83,22 +183,26 @@
     }
 
     .hero-text h1 {
-      font-size: 3.2rem;
-      line-height: 1.1;
-      color: #f9fafb;
-      margin-bottom: 12px;
+      font-size: 3rem;
+      line-height: 1.05;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .hero-text h1 span {
+      color: var(--accent);
     }
 
     .hero-text h2 {
-      font-size: 1.3rem;
-      color: #38bdf8;
+      font-size: 1.2rem;
+      color: var(--accent);
       min-height: 1.6em;
       margin-bottom: 16px;
     }
 
     .hero-text p {
-      font-size: 1rem;
-      color: #94a3b8;
+      font-size: 0.98rem;
+      color: var(--text-muted);
       max-width: 520px;
       margin-bottom: 24px;
     }
@@ -109,7 +213,7 @@
       gap: 12px;
     }
 
-    .btn-primary, .btn-ghost {
+    .btn-primary, .btn-ghost, .btn-resume {
       padding: 10px 20px;
       border-radius: 999px;
       font-size: 0.95rem;
@@ -119,31 +223,64 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: 0.3s;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      transform-style: preserve-3d;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
       color: #020617;
       font-weight: 600;
       box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
     }
 
     .btn-primary:hover {
-      box-shadow: 0 0 38px rgba(56, 189, 248, 0.7);
-      transform: translateY(-1px);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.7);
+      transform: translateY(-2px) rotate3d(1, -1, 0, 8deg);
     }
 
     .btn-ghost {
       background: transparent;
-      border-color: #334155;
-      color: #e2e8f0;
+      border-color: var(--border);
+      color: var(--text-main);
     }
 
     .btn-ghost:hover {
-      border-color: #38bdf8;
-      color: #38bdf8;
-      transform: translateY(-1px);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px) rotate3d(-1, 1, 0, 8deg);
+    }
+
+    .btn-resume {
+      position: relative;
+      background: radial-gradient(circle at top left, var(--accent-soft), #020617);
+      color: var(--accent);
+      border-color: var(--accent);
+      overflow: hidden;
+    }
+
+    .btn-resume::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background: conic-gradient(from 0deg, transparent, var(--accent), transparent);
+      animation: spin-ring 1.8s linear infinite;
+      opacity: 0.8;
+    }
+
+    .btn-resume span {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes spin-ring {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .btn-resume:hover {
+      transform: translateY(-2px) rotate3d(1, 1, 0, 10deg);
+      box-shadow: 0 0 30px var(--accent-soft);
     }
 
     .hero-lottie {
@@ -152,6 +289,8 @@
       height: 340px;
       margin: 0 auto;
       filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.5));
+      transform-style: preserve-3d;
+      transform: perspective(800px) rotateY(-8deg);
     }
 
     /* SECTIONS (scroll reveal) */
@@ -160,13 +299,14 @@
       max-width: 1000px;
       margin: 32px auto;
       padding: 32px;
-      background: rgba(15, 23, 42, 0.94);
+      background: var(--bg-elevated);
       border-radius: 20px;
-      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.9);
-      border: 1px solid #1f2937;
+      box-shadow: 0 22px 60px var(--shadow-strong);
+      border: 1px solid var(--border);
       transform: translateY(50px);
       opacity: 0;
       transition: 0.8s ease-out;
+      backdrop-filter: blur(10px);
     }
 
     section.visible {
@@ -176,12 +316,12 @@
 
     h3 {
       font-size: 1.8rem;
-      margin-bottom: 18px;
-      color: #38bdf8;
+      margin-bottom: 16px;
+      color: var(--accent);
     }
 
     section p {
-      color: #cbd5f5;
+      color: var(--text-muted);
       font-size: 0.97rem;
     }
 
@@ -207,12 +347,12 @@
 
     .skills-scroll::before {
       left: 0;
-      background: linear-gradient(to right, #0b1220, transparent);
+      background: linear-gradient(to right, var(--bg-elevated), transparent);
     }
 
     .skills-scroll::after {
       right: 0;
-      background: linear-gradient(to left, #0b1220, transparent);
+      background: linear-gradient(to left, var(--bg-elevated), transparent);
     }
 
     .skills-track {
@@ -230,7 +370,7 @@
       align-items: center;
       margin-right: 50px;
       font-size: 0.98rem;
-      color: #e5e7eb;
+      color: var(--text-main);
     }
 
     .skill-item img {
@@ -241,6 +381,154 @@
       filter: drop-shadow(0 0 8px rgba(56,189,248,0.5));
     }
 
+    /* EXPERIENCE TIMELINE */
+    .timeline {
+      position: relative;
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      opacity: 0.7;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 24px;
+      transform: translateX(30px);
+      opacity: 0;
+      transition: 0.7s ease-out;
+    }
+
+    .timeline.visible .timeline-item {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent), #0b1120);
+      box-shadow: 0 0 12px var(--accent-soft);
+    }
+
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-role {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .timeline-company {
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+
+    .timeline-dates {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-body {
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .timeline-body ul {
+      margin-top: 6px;
+      margin-left: 18px;
+    }
+
+    .timeline-body li {
+      margin-bottom: 4px;
+    }
+
+    /* EDUCATION CARDS */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .edu-card {
+      position: relative;
+      padding: 20px 18px;
+      border-radius: 16px;
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--card));
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px var(--shadow-strong);
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-6px) rotate3d(1, -1, 0, 10deg);
+      box-shadow: 0 18px 45px rgba(56,189,248,0.4);
+      border-color: var(--accent);
+    }
+
+    .edu-badge {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: var(--accent);
+      color: #020617;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .edu-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .edu-subtitle {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .edu-dates {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .edu-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .edu-body ul {
+      margin-top: 6px;
+      margin-left: 18px;
+    }
+
     /* PROJECT CARDS */
     .projects-grid {
       display: grid;
@@ -249,14 +537,15 @@
     }
 
     .project-card {
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), #020617);
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--card));
       padding: 22px;
       border-radius: 16px;
-      border: 1px solid #1f2937;
+      border: 1px solid var(--border);
       transition: 0.4s;
       transform: translateY(12px);
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
     }
 
     .project-card::before {
@@ -265,7 +554,7 @@
       width: 160px;
       height: 160px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.35), transparent 60%);
+      background: radial-gradient(circle, var(--accent-soft), transparent 60%);
       top: -60px;
       right: -60px;
       opacity: 0.7;
@@ -273,20 +562,20 @@
     }
 
     .project-card:hover {
-      transform: translateY(-6px) scale(1.01);
+      transform: translateY(-6px) scale(1.01) rotate3d(-1, 1, 0, 8deg);
       box-shadow: 0 0 24px rgba(56,189,248,0.65);
-      border-color: #38bdf8;
+      border-color: var(--accent);
     }
 
     .project-card h4 {
       font-size: 1.1rem;
       margin-bottom: 6px;
-      color: #e5e7eb;
+      color: var(--text-main);
     }
 
     .project-card p {
       font-size: 0.92rem;
-      color: #cbd5f5;
+      color: var(--text-muted);
       margin-bottom: 8px;
     }
 
@@ -302,15 +591,20 @@
       padding: 3px 8px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.9);
-      border: 1px solid #38bdf8;
+      border: 1px solid var(--accent);
       color: #bae6fd;
+    }
+
+    body.light-theme .tag {
+      background: #eef2ff;
+      color: #1e293b;
     }
 
     .project-link {
       margin-top: 10px;
       display: inline-block;
       font-size: 0.85rem;
-      color: #38bdf8;
+      color: var(--accent);
       text-decoration: none;
     }
 
@@ -322,7 +616,7 @@
     footer {
       text-align: center;
       padding: 30px;
-      color: #64748b;
+      color: var(--text-muted);
       margin-top: 40px;
       font-size: 0.85rem;
     }
@@ -332,25 +626,29 @@
       .hero {
         grid-template-columns: minmax(0, 1fr);
         text-align: left;
-        padding-top: 140px;
+        padding-top: 130px;
       }
 
       .hero-text h1 {
-        font-size: 2.4rem;
+        font-size: 2.3rem;
       }
 
       nav {
         padding-inline: 20px;
       }
 
-      nav div:last-child {
-        display: none; /* simple mobile fallback; we can add burger menu later */
+      nav .nav-links {
+        display: none; /* simple mobile fallback; can add burger later */
       }
     }
 
     @media (max-width: 600px) {
       section {
         padding: 22px;
+      }
+
+      .hero {
+        padding-inline: 18px;
       }
     }
   </style>
@@ -360,31 +658,45 @@
   <!-- PARTICLE BACKGROUND -->
   <canvas id="particles"></canvas>
 
+  <!-- FLOATING SHAPES -->
+  <div class="floating-shape shape-1"></div>
+  <div class="floating-shape shape-2"></div>
+  <div class="floating-shape shape-3"></div>
+
   <!-- NAVBAR -->
   <nav>
-    <div class="logo">Dheeraj Sree Sandupatla</div>
-    <div>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+    <div class="logo">Dheeraj Sree</div>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle">
+        <span id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark</span>
+      </button>
     </div>
   </nav>
 
   <!-- HERO SECTION -->
   <section class="hero visible">
     <div class="hero-text">
-      <h1>Dheeraj Sree<br/>Sandupatla</h1>
+      <h1><span>Dheeraj</span> Sree<br/>Sandupatla</h1>
       <h2><span id="typed"></span></h2>
       <p>
-        Risk Analyst – Portfolio Forecasting with a passion for building data-driven solutions,
-        scalable cloud pipelines, and analytics that power smarter decisions.
+        Risk Analyst – Portfolio Forecasting with a background in Mining Engineering and a
+        tech-focused Master’s in Business Analytics & Project Management. I love building data,
+        cloud, and analytics solutions that turn portfolio risk into clear, actionable insight.
       </p>
       <div class="hero-actions">
         <a href="#projects" class="btn-primary">View Projects</a>
         <a href="#contact" class="btn-ghost">Get in Touch</a>
+        <!-- Update href to your actual resume link when ready -->
+        <a href="#" class="btn-resume"><span>⬇ Download Resume</span></a>
       </div>
     </div>
     <div class="hero-lottie" id="lottie-hero"></div>
@@ -394,9 +706,11 @@
   <section id="about">
     <h3>About Me</h3>
     <p>
-      Write your summary here — for example, a short 4–6 line intro about your background,
-      current role in portfolio forecasting, your tech stack (Databricks, Python, SQL, Power BI, AWS, etc.),
-      and what type of work or roles you’re excited about.
+      I’m Dheeraj, a Risk Analyst in Portfolio Forecasting with a unique blend of domain and tech.
+      I began my career as a Geotechnical Engineer at Vedanta Resources and transitioned into analytics
+      and risk through my Master’s at the University of Connecticut (Data Science concentration).
+      Today, I work on data-driven portfolio forecasting, cloud-based analytics, and decision-support
+      solutions that help financial institutions understand and manage risk with confidence.
     </p>
   </section>
 
@@ -406,7 +720,7 @@
     <p>Core tools & technologies I work with:</p>
     <div class="skills-scroll">
       <div class="skills-track">
-        <!-- Repeat the sequence twice for seamless looping -->
+        <!-- loop 1 -->
         <div class="skill-item">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/>Python
         </div>
@@ -417,19 +731,18 @@
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/>Docker
         </div>
         <div class="skill-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>Git
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes"/>Kubernetes
         </div>
         <div class="skill-item">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/>PostgreSQL
         </div>
         <div class="skill-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes"/>Kubernetes
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>Git
         </div>
         <div class="skill-item">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"/>Pandas
         </div>
-
-        <!-- second loop -->
+        <!-- loop 2 -->
         <div class="skill-item">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/>Python
         </div>
@@ -440,13 +753,13 @@
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/>Docker
         </div>
         <div class="skill-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>Git
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes"/>Kubernetes
         </div>
         <div class="skill-item">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/>PostgreSQL
         </div>
         <div class="skill-item">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes"/>Kubernetes
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>Git
         </div>
         <div class="skill-item">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"/>Pandas
@@ -455,42 +768,80 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
+  <!-- EXPERIENCE (Animated timeline) -->
   <section id="experience">
     <h3>Experience</h3>
-    <p>
-      Add your experience bullets here later. For example: your current role as Risk Analyst – Portfolio Forecasting,
-      previous analytics / BI roles, key business impact (improved forecast accuracy, reduced manual work, etc.).
-    </p>
+    <div class="timeline">
+      <!-- GM Financial -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Risk Analyst – Portfolio Forecasting</span>
+          <span class="timeline-company">@ GM Financial</span>
+          <span class="timeline-dates">Nov 2023 – Present</span>
+        </div>
+        <div class="timeline-body">
+          <p>
+            Working in portfolio forecasting and risk analytics, leveraging programming, cloud, and BI tools
+            to support decision-making across the auto finance portfolio.
+          </p>
+          <ul>
+            <li>Build and maintain analytical solutions to monitor portfolio performance and risk trends.</li>
+            <li>Collaborate with cross-functional teams to translate business questions into data-driven insights.</li>
+            <li>Use tools like Python, SQL, and visualization platforms to summarize complex portfolio behavior.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Vedanta -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Geotechnical Engineer</span>
+          <span class="timeline-company">@ Vedanta Resources</span>
+          <span class="timeline-dates">Jun 2019 – Apr 2021</span>
+        </div>
+        <div class="timeline-body">
+          <p>
+            Started my career in a high-impact operations environment and naturally gravitated to analytics,
+            automation, and performance tracking.
+          </p>
+          <ul>
+            <li>Optimized support quality and cycle time using Six Sigma techniques, saving ~25 hours/week and generating ~$2M in annual savings, presenting findings to the CEO.</li>
+            <li>Developed an automated Excel-based training tracking system that achieved 80% compliance within three months by monitoring training records and notifying managers of overdue courses.</li>
+            <li>Built weekly-refreshing Tableau dashboards to provide HQ with real-time performance data, reducing manual status checks and saving 8 hours weekly.</li>
+            <li>Collected and analyzed data from multiple locations, creating visually compelling Tableau dashboards that improved productivity and efficiency.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- PROJECTS (animated 3D cards) -->
   <section id="projects">
     <h3>Projects</h3>
     <div class="projects-grid">
-      <!-- Project 1 -->
+      <!-- Placeholder projects – you can replace text & links -->
       <div class="project-card">
-        <h4>Sample Portfolio Forecasting Dashboard</h4>
+        <h4>Portfolio Forecasting Dashboard</h4>
         <p>
-          End-to-end pipeline to forecast portfolio performance, integrating Databricks, SQL, and Power BI to
-          monitor risk metrics, delinquencies, and portfolio trends.
+          End-to-end analytics view for portfolio performance: integrates risk metrics, delinquency trends, and
+          forecasting outputs into a single interactive dashboard.
         </p>
         <div class="project-tags">
-          <span class="tag">Databricks</span>
           <span class="tag">Python</span>
-          <span class="tag">Power BI</span>
           <span class="tag">SQL</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Risk Analytics</span>
         </div>
-        <!-- Replace # with your real GitHub/project link later -->
         <a href="#" class="project-link">View project →</a>
       </div>
 
-      <!-- Project 2 -->
       <div class="project-card">
         <h4>Credit Risk Simulation Engine</h4>
         <p>
-          Simulated credit risk scenarios using Python and scikit-learn, generating insights into portfolio sensitivity
-          under macroeconomic stress conditions.
+          Simulated different macroeconomic and portfolio scenarios to study credit risk sensitivity and support
+          what-if analysis for leadership.
         </p>
         <div class="project-tags">
           <span class="tag">Python</span>
@@ -500,12 +851,11 @@
         <a href="#" class="project-link">View project →</a>
       </div>
 
-      <!-- Project 3 -->
       <div class="project-card">
         <h4>Cloud ETL for Risk Analytics</h4>
         <p>
-          Built a cloud-native ETL flow on AWS for ingesting, cleaning, and aggregating loan-level data into analytics-ready
-          layers for downstream reporting.
+          Designed a cloud-based ETL pattern to ingest, clean, and aggregate loan-level data into analytics-ready
+          layers for downstream reporting and modeling.
         </p>
         <div class="project-tags">
           <span class="tag">AWS</span>
@@ -518,12 +868,61 @@
     </div>
   </section>
 
-  <!-- EDUCATION -->
+  <!-- EDUCATION (Master's highlighted, B.Tech respected) -->
   <section id="education">
     <h3>Education</h3>
-    <p>
-      Add your education details here later: degree, university, graduation year, and any notable coursework/projects.
-    </p>
+    <div class="edu-grid">
+      <!-- Masters - Highlighted as tech pivot -->
+      <div class="edu-card">
+        <div class="edu-badge">Tech Pivot</div>
+        <div class="edu-title">
+          Master’s in Business Analytics & Project Management (Data Science Concentration)
+        </div>
+        <div class="edu-subtitle">
+          University of Connecticut, School of Business
+        </div>
+        <div class="edu-dates">
+          Jan 2022 – May 2023 • GPA: 3.92 / 4.0
+        </div>
+        <div class="edu-body">
+          <p>
+            Graduate program that formalized my transition into tech and analytics, with a strong focus
+            on data science, cloud, and decision modeling.
+          </p>
+          <ul>
+            <li>Big Data Using Cloud Computing</li>
+            <li>Data Science Using Python</li>
+            <li>Data Mining and Business Intelligence</li>
+            <li>Business Decision Modeling & Predictive Modeling</li>
+            <li>Business Process Modeling and Data Management</li>
+            <li>Statistics in Business Analytics Using R</li>
+            <li>Introduction to Project Management</li>
+            <li>Project Risk and Agile Methodologies</li>
+            <li>Project Leadership and Communication</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- B.Tech - Prestigious foundation -->
+      <div class="edu-card">
+        <div class="edu-title">
+          Bachelor of Technology (B.Tech), Mining Engineering
+        </div>
+        <div class="edu-subtitle">
+          Visvesvaraya National Institute of Technology (VNIT), Nagpur
+        </div>
+        <div class="edu-dates">
+          2015 – 2019
+        </div>
+        <div class="edu-body">
+          <p>
+            A rigorous engineering foundation from one of India’s premier institutes. VNIT shaped my
+            problem-solving, quantitative thinking, and ability to work in complex, high-stakes environments—
+            all of which feed directly into how I approach risk and analytics today.
+          </p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACT -->
@@ -539,11 +938,33 @@
   </footer>
 
   <script>
+    /* THEME SWITCH */
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      body.classList.add('light-theme');
+      themeIcon.textContent = '🌞';
+      themeLabel.textContent = 'Light';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-theme');
+      const isLight = body.classList.contains('light-theme');
+      themeIcon.textContent = isLight ? '🌞' : '🌙';
+      themeLabel.textContent = isLight ? 'Light' : 'Dark';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
     /* TYPED TEXT ANIMATION */
     new Typed('#typed', {
       strings: [
         'Risk Analyst – Portfolio Forecasting',
-        'Data • Cloud • ML Enthusiast',
+        'Business Analytics & Data Science',
+        'Mining Engineer turned Techie',
         'Turning Data Into Decisions'
       ],
       typeSpeed: 45,
@@ -552,35 +973,42 @@
       loop: true
     });
 
-    /* LOTTIE HERO ANIMATION */
+    /* LOTTIE HERO AVATAR */
     lottie.loadAnimation({
       container: document.getElementById('lottie-hero'),
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      // Sample public Lottie animation; you can replace with your own JSON URL
-      path: 'https://assets10.lottiefiles.com/packages/lf20_qp1q7mct.json'
+      // Sample public avatar-style animation; replace with your own JSON URL if you like
+      path: 'https://assets7.lottiefiles.com/packages/lf20_9zhvyj7f.json'
     });
 
-    /* SCROLL-BASED SECTION REVEAL */
+    /* SCROLL-BASED SECTION REVEAL + TIMELINE ANIMATION */
     const sections = document.querySelectorAll('section');
+    const timeline = document.querySelector('.timeline');
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            if (entry.target === timeline?.parentElement) {
+              timeline.classList.add('visible');
+            }
           }
         });
       },
       { threshold: 0.2 }
     );
+
     sections.forEach((sec) => observer.observe(sec));
 
-    /* NEON PARTICLE BACKGROUND */
+    /* NEON PARTICLE BACKGROUND WITH MOUSE REACTIVITY */
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
     const particleCount = 80;
+    const mouse = { x: null, y: null };
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
@@ -588,6 +1016,11 @@
     }
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
 
     function createParticles() {
       particles = [];
@@ -604,8 +1037,10 @@
 
     function drawParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#0b1220';
+      ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg');
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const accentColor = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#38bdf8';
 
       for (let p of particles) {
         // Move
@@ -618,12 +1053,27 @@
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
+        // Mouse interaction
+        let glowRadius = p.radius;
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 140) {
+            // Slight repulsion
+            p.x += dx * 0.01;
+            p.y += dy * 0.01;
+            // Extra glow
+            glowRadius = p.radius + (140 - dist) / 70;
+          }
+        }
+
         // Draw particle
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#38bdf8';
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = '#38bdf8';
+        ctx.arc(p.x, p.y, glowRadius, 0, Math.PI * 2);
+        ctx.fillStyle = accentColor;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = accentColor;
         ctx.fill();
         ctx.closePath();
       }
@@ -635,9 +1085,9 @@
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            const alpha = 1 - dist / 120;
-            ctx.strokeStyle = 'rgba(56, 189, 248,' + alpha + ')';
+          if (dist < 130) {
+            const alpha = 1 - dist / 130;
+            ctx.strokeStyle = `rgba(148, 163, 184, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
