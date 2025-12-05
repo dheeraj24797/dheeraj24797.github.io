@@ -8,6 +8,15 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 
+  <!-- Icons (for GitHub / LinkedIn / Gmail) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
   <!-- Typed.js for typing animation -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
@@ -147,8 +156,13 @@
       color: var(--accent);
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .theme-toggle {
-      margin-left: 16px;
       padding: 6px 14px;
       border-radius: 999px;
       border: 1px solid var(--border);
@@ -209,11 +223,12 @@
 
     .hero-actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
     }
 
-    .btn-primary, .btn-ghost, .btn-resume {
+    .btn-primary, .btn-ghost {
       padding: 10px 20px;
       border-radius: 999px;
       font-size: 0.95rem;
@@ -239,48 +254,45 @@
       transform: translateY(-2px) rotate3d(1, -1, 0, 8deg);
     }
 
-    .btn-ghost {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--text-main);
+    .hero-socials {
+      display: flex;
+      gap: 14px;
     }
 
-    .btn-ghost:hover {
-      border-color: var(--accent);
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--accent);
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--card));
       color: var(--accent);
-      transform: translateY(-2px) rotate3d(-1, 1, 0, 8deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 0 18px rgba(56,189,248,0.45);
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: icon-float 4s ease-in-out infinite;
     }
 
-    .btn-resume {
-      position: relative;
-      background: radial-gradient(circle at top left, var(--accent-soft), #020617);
-      color: var(--accent);
-      border-color: var(--accent);
-      overflow: hidden;
+    .icon-btn:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    .icon-btn:nth-child(3) {
+      animation-delay: 0.6s;
     }
 
-    .btn-resume::before {
-      content: "";
-      position: absolute;
-      inset: -40px;
-      background: conic-gradient(from 0deg, transparent, var(--accent), transparent);
-      animation: spin-ring 1.8s linear infinite;
-      opacity: 0.8;
+    @keyframes icon-float {
+      0%   { transform: translateY(0) rotate3d(1,0,0,0deg); }
+      50%  { transform: translateY(-4px) rotate3d(1,1,0,6deg); }
+      100% { transform: translateY(0) rotate3d(0,1,0,0deg); }
     }
 
-    .btn-resume span {
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes spin-ring {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .btn-resume:hover {
-      transform: translateY(-2px) rotate3d(1, 1, 0, 10deg);
-      box-shadow: 0 0 30px var(--accent-soft);
+    .icon-btn:hover {
+      transform: translateY(-4px) rotate3d(1,1,0,12deg) scale(1.05);
+      box-shadow: 0 0 28px rgba(56,189,248,0.8);
     }
 
     .hero-lottie {
@@ -381,6 +393,39 @@
       filter: drop-shadow(0 0 8px rgba(56,189,248,0.5));
     }
 
+    /* COMPANY / COLLEGE LOGO BOXES */
+    .logo-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #0f172a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #f9fafb;
+      margin-right: 10px;
+      box-shadow: 0 0 14px rgba(15,23,42,0.8);
+      flex-shrink: 0;
+    }
+
+    .logo-gm {
+      background: linear-gradient(135deg, #0046fe, #00a3ff);
+    }
+
+    .logo-vedanta {
+      background: linear-gradient(135deg, #007e3a, #00a0e3);
+    }
+
+    .logo-uconn {
+      background: linear-gradient(135deg, #0b1740, #204c8c);
+    }
+
+    .logo-vnit {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+    }
+
     /* EXPERIENCE TIMELINE */
     .timeline {
       position: relative;
@@ -427,9 +472,16 @@
     .timeline-header {
       display: flex;
       flex-wrap: wrap;
-      align-items: baseline;
+      align-items: center;
       gap: 8px;
       margin-bottom: 4px;
+    }
+
+    .timeline-header-main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px;
     }
 
     .timeline-role {
@@ -462,7 +514,7 @@
       margin-bottom: 4px;
     }
 
-    /* EDUCATION CARDS */
+    /* EDUCATION CARDS (animated like Projects) */
     .edu-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -479,6 +531,20 @@
       box-shadow: 0 10px 30px var(--shadow-strong);
       transform-style: preserve-3d;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      overflow: hidden;
+    }
+
+    .edu-card::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-soft), transparent 60%);
+      top: -50px;
+      right: -50px;
+      opacity: 0.6;
+      pointer-events: none;
     }
 
     .edu-card:hover {
@@ -487,24 +553,17 @@
       border-color: var(--accent);
     }
 
-    .edu-badge {
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      background: var(--accent);
-      color: #020617;
-      font-weight: 600;
-      letter-spacing: 0.03em;
+    .edu-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
     }
 
     .edu-title {
       font-size: 1rem;
       font-weight: 600;
       color: var(--text-main);
-      margin-bottom: 4px;
     }
 
     .edu-subtitle {
@@ -673,7 +732,6 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
       </div>
       <button class="theme-toggle" id="themeToggle">
         <span id="themeIcon">🌙</span>
@@ -689,14 +747,38 @@
       <h2><span id="typed"></span></h2>
       <p>
         Risk Analyst – Portfolio Forecasting with a background in Mining Engineering and a
-        tech-focused Master’s in Business Analytics & Project Management. I love building data,
-        cloud, and analytics solutions that turn portfolio risk into clear, actionable insight.
+        tech-focused Master’s in Business Analytics & Project Management. I build data, cloud,
+        and analytics solutions that turn portfolio risk into clear, actionable insight.
       </p>
       <div class="hero-actions">
         <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="#contact" class="btn-ghost">Get in Touch</a>
-        <!-- Update href to your actual resume link when ready -->
-        <a href="#" class="btn-resume"><span>⬇ Download Resume</span></a>
+        <div class="hero-socials">
+          <a
+            class="icon-btn"
+            href="https://github.com/dheeraj24797"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            class="icon-btn"
+            href="https://www.linkedin.com/in/dheeraj-sree-sandupatla/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            class="icon-btn"
+            href="mailto:dheeraj.sree222@gmail.com"
+            aria-label="Gmail"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
       </div>
     </div>
     <div class="hero-lottie" id="lottie-hero"></div>
@@ -768,7 +850,7 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE (Animated timeline) -->
+  <!-- EXPERIENCE (Animated timeline with logos) -->
   <section id="experience">
     <h3>Experience</h3>
     <div class="timeline">
@@ -776,9 +858,12 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-header">
-          <span class="timeline-role">Risk Analyst – Portfolio Forecasting</span>
-          <span class="timeline-company">@ GM Financial</span>
-          <span class="timeline-dates">Nov 2023 – Present</span>
+          <div class="logo-box logo-gm">GM</div>
+          <div class="timeline-header-main">
+            <span class="timeline-role">Risk Analyst – Portfolio Forecasting</span>
+            <span class="timeline-company">@ GM Financial</span>
+            <span class="timeline-dates">Nov 2023 – Present</span>
+          </div>
         </div>
         <div class="timeline-body">
           <p>
@@ -797,9 +882,12 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-header">
-          <span class="timeline-role">Geotechnical Engineer</span>
-          <span class="timeline-company">@ Vedanta Resources</span>
-          <span class="timeline-dates">Jun 2019 – Apr 2021</span>
+          <div class="logo-box logo-vedanta">VR</div>
+          <div class="timeline-header-main">
+            <span class="timeline-role">Geotechnical Engineer</span>
+            <span class="timeline-company">@ Vedanta Resources</span>
+            <span class="timeline-dates">Jun 2019 – Apr 2021</span>
+          </div>
         </div>
         <div class="timeline-body">
           <p>
@@ -868,18 +956,22 @@
     </div>
   </section>
 
-  <!-- EDUCATION (Master's highlighted, B.Tech respected) -->
+  <!-- EDUCATION (Master highlighted, B.Tech respected, both animated) -->
   <section id="education">
     <h3>Education</h3>
     <div class="edu-grid">
-      <!-- Masters - Highlighted as tech pivot -->
+      <!-- Masters -->
       <div class="edu-card">
-        <div class="edu-badge">Tech Pivot</div>
-        <div class="edu-title">
-          Master’s in Business Analytics & Project Management (Data Science Concentration)
-        </div>
-        <div class="edu-subtitle">
-          University of Connecticut, School of Business
+        <div class="edu-header">
+          <div class="logo-box logo-uconn">UC</div>
+          <div>
+            <div class="edu-title">
+              Master’s in Business Analytics & Project Management (Data Science Concentration)
+            </div>
+            <div class="edu-subtitle">
+              University of Connecticut, School of Business
+            </div>
+          </div>
         </div>
         <div class="edu-dates">
           Jan 2022 – May 2023 • GPA: 3.92 / 4.0
@@ -903,34 +995,30 @@
         </div>
       </div>
 
-      <!-- B.Tech - Prestigious foundation -->
+      <!-- B.Tech -->
       <div class="edu-card">
-        <div class="edu-title">
-          Bachelor of Technology (B.Tech), Mining Engineering
-        </div>
-        <div class="edu-subtitle">
-          Visvesvaraya National Institute of Technology (VNIT), Nagpur
+        <div class="edu-header">
+          <div class="logo-box logo-vnit">VN</div>
+          <div>
+            <div class="edu-title">
+              Bachelor of Technology (B.Tech), Mining Engineering
+            </div>
+            <div class="edu-subtitle">
+              Visvesvaraya National Institute of Technology (VNIT), Nagpur
+            </div>
+          </div>
         </div>
         <div class="edu-dates">
           2015 – 2019
         </div>
         <div class="edu-body">
           <p>
-            A rigorous engineering foundation from one of India’s premier institutes. VNIT shaped my
-            problem-solving, quantitative thinking, and ability to work in complex, high-stakes environments—
-            all of which feed directly into how I approach risk and analytics today.
+            Rigorous engineering foundation from one of India’s premier institutes, shaping my
+            quantitative thinking and structured problem-solving approach.
           </p>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <h3>Contact</h3>
-    <p>Email: <strong>your.email@example.com</strong></p>
-    <p>LinkedIn: <strong>your LinkedIn URL</strong></p>
-    <p>GitHub: <strong>https://github.com/dheeraj24797</strong></p>
   </section>
 
   <footer>
@@ -979,7 +1067,7 @@
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      // Sample public avatar-style animation; replace with your own JSON URL if you like
+      // Sample avatar-style animation; you can swap this JSON URL later
       path: 'https://assets7.lottiefiles.com/packages/lf20_9zhvyj7f.json'
     });
 
