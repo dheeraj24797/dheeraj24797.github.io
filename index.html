@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dheeraj Sree Sandupatla | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -12,6 +14,16 @@
       background: #0f172a;
       color: #e2e8f0;
       overflow-x: hidden;
+    }
+
+    /* PARTICLE BACKGROUND */
+    #particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
 
     /* NAVBAR */
@@ -23,7 +35,7 @@
       align-items: center;
       position: fixed;
       top: 0;
-      z-index: 100;
+      z-index: 10;
       background: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(10px);
     }
@@ -51,15 +63,8 @@
       font-weight: 700;
       color: #f8fafc;
     }
-    .hero h2 {
-      margin-top: 10px;
-      font-size: 28px;
+    .hero h2 span{
       color: #38bdf8;
-    }
-    .hero p {
-      margin-top: 15px;
-      font-size: 18px;
-      color: #94a3b8;
     }
 
     /* SECTIONS */
@@ -71,29 +76,54 @@
       background: #1e293b;
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      animation: fadeIn 1.5s ease;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: .8s;
+    }
+    section.visible {
+      transform: translateY(0px);
+      opacity: 1;
     }
     h3 { font-size: 32px; margin-bottom: 20px; color: #38bdf8; }
 
-    /* SKILLS GRID */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
+    /* SKILLS SCROLL LINE */
+    .skills-scroll {
+      overflow: hidden;
+      white-space: nowrap;
+      margin-top: 20px;
     }
-    .skill-box {
-      padding: 18px;
+    .skills-track {
+      display: inline-block;
+      animation: scroll 12s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .skill-item{
+      display: inline-flex;
+      align-items: center;
+      margin-right: 60px;
+      font-size: 20px;
+    }
+    .skill-item img{
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    /* PROJECT CARDS */
+    .project-card{
       background: #0f172a;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: 500;
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 12px;
       border: 1px solid #334155;
-      transition: 0.3s;
+      transition:.4s;
+      transform: translateY(20px);
     }
-    .skill-box:hover {
-      background: #38bdf8;
-      color: #0f172a;
-      transform: translateY(-5px);
+    .project-card:hover{
+      transform: translateY(-8px);
+      box-shadow:0 0 20px #38bdf899;
     }
 
     /* FOOTER */
@@ -107,6 +137,9 @@
 </head>
 
 <body>
+  <!-- PARTICLES -->
+  <canvas id="particles"></canvas>
+
   <!-- NAVBAR -->
   <nav>
     <div class="logo">Dheeraj Sree Sandupatla</div>
@@ -123,8 +156,7 @@
   <!-- HERO SECTION -->
   <div class="hero">
     <h1>Dheeraj Sree Sandupatla</h1>
-    <h2>Risk Analyst – Portfolio Forecasting</h2>
-    <p>Transforming data into insights through cloud, analytics, and scalable engineering.</p>
+    <h2><span id="typed"></span></h2>
   </div>
 
   <!-- ABOUT -->
@@ -136,18 +168,16 @@
   <!-- SKILLS -->
   <section id="skills">
     <h3>Skills</h3>
-    <div class="skills-grid">
-      <div class="skill-box">Databricks</div>
-      <div class="skill-box">Python</div>
-      <div class="skill-box">SQL</div>
-      <div class="skill-box">Power BI</div>
-      <div class="skill-box">Excel</div>
-      <div class="skill-box">PostgreSQL</div>
-      <div class="skill-box">AWS</div>
-      <div class="skill-box">Docker</div>
-      <div class="skill-box">Kubernetes</div>
-      <div class="skill-box">SciKit Learn</div>
-      <div class="skill-box">Git</div>
+    <div class="skills-scroll">
+      <div class="skills-track">
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"/>Python</div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg"/>AWS</div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"/>Docker</div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/>Git</div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"/>PostgreSQL</div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"/>Kubernetes</div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"/>Pandas</div>
+      </div>
     </div>
   </section>
 
@@ -160,7 +190,12 @@
   <!-- PROJECTS -->
   <section id="projects">
     <h3>Projects</h3>
-    <p>Your projects will look great here — add content anytime.</p>
+
+    <div class="project-card">
+      <h4>Project Title</h4>
+      <p>Project description goes here.</p>
+    </div>
+
   </section>
 
   <!-- EDUCATION -->
@@ -178,5 +213,18 @@
   </section>
 
   <footer>© 2025 Dheeraj Sree Sandupatla. All Rights Reserved.</footer>
-</body>
-</html>
+
+  <script>
+    /* TYPING ANIMATION */
+    new Typed('#typed', {
+      strings: ['Risk Analyst – Portfolio Forecasting', 'Data | Cloud | ML Enthusiast', 'Turning Data Into Decisions'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true
+    });
+
+    /* SCROLL REVEAL */
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', ()=>{
+      sections.forEach(sec=>{
+        if(sec.getBoundingClientRect().top < window.innerHeight - 80){sec.classList.add('
