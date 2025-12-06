@@ -1,299 +1,1194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dheeraj Sree Sandupatla | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dheeraj Sree Sandupatla | Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
---bg:#020617;--bg2:rgba(15,23,42,0.9);--text:#e2e8f0;--muted:#94a3b8;
---accent:#38bdf8;--accent2:#818cf8;--border:#1f2937;--soft:rgba(56,189,248,0.25);
-}
-body.light{--bg:#f4f6ff;--bg2:#ffffff;--text:#0f172a;--muted:#52525b;
---accent:#2563eb;--accent2:#9333ea;--border:#d4d4ff;--soft:rgba(37,99,235,0.15);}
-body{font-family:Poppins;background:var(--bg);color:var(--text);transition:.3s;overflow-x:hidden;}
+  <!-- Icons (for GitHub / LinkedIn / Gmail) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
-#particles{position:fixed;width:100%;height:100%;top:0;left:0;z-index:-3;}
+  <!-- Typed.js for typing animation -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-.fshape{position:fixed;border-radius:999px;background:radial-gradient(circle,var(--soft),transparent 70%);
-opacity:.45;filter:blur(1px);z-index:-2;animation:float 18s ease-in-out infinite alternate;}
-.f1{width:260px;height:260px;top:8%;left:5%;}
-.f2{width:320px;height:320px;right:10%;bottom:4%;animation-delay:3s;}
-.f3{width:220px;height:220px;left:35%;bottom:40%;animation-delay:6s;}
-@keyframes float{0%{transform:translate(0,0);}50%{transform:translate(20px,-30px);}
-100%{transform:translate(-20px,20px);}}
+  <!-- Lottie for JSON animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 
-nav{position:fixed;width:100%;top:0;padding:14px 40px;background:var(--bg2);backdrop-filter:blur(12px);
-display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);z-index:20;}
-.logo{font-size:1rem;font-weight:700;letter-spacing:.07em;color:var(--accent);}
-.nav-links a{text-decoration:none;margin-left:24px;font-size:.95rem;color:var(--text);transition:.3s;}
-.nav-links a:hover{color:var(--accent);}
-.theme-btn{padding:6px 14px;border-radius:999px;border:1px solid var(--border);background:var(--bg2);
-color:var(--text);cursor:pointer;display:flex;gap:6px;align-items:center;transition:.3s;}
-.theme-btn:hover{border-color:var(--accent);}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.hero{padding:150px 24px 110px;max-width:1100px;margin:auto;display:grid;
-grid-template-columns:1.6fr 1fr;gap:40px;align-items:center;}
-.hero h1{font-size:3rem;line-height:1.05;margin-bottom:4px;color:var(--accent);}
-.hero h2{font-size:1.2rem;color:var(--accent);min-height:1.5em;margin-bottom:12px;}
-.hero p{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:20px;}
+    :root {
+      /* DARK THEME */
+      --bg: #020617;
+      --bg-elevated: rgba(15, 23, 42, 0.96);
+      --card: #020617;
+      --border: #1f2937;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.35);
+      --accent-strong: #818cf8;
+      --shadow-strong: rgba(15,23,42,0.9);
+    }
 
-.socials{display:flex;gap:16px;margin-top:16px;}
-.sbtn{width:44px;height:44px;border-radius:14px;border:1px solid var(--accent);font-size:1.3rem;
-display:flex;align-items:center;justify-content:center;color:var(--accent);
-background:radial-gradient(circle,var(--soft),var(--bg));box-shadow:0 0 18px var(--soft);
-transition:.3s;animation:ficon 4s infinite ease-in-out;}
-.sbtn:hover{transform:translateY(-4px)scale(1.06);}
-@keyframes ficon{0%{transform:translateY(0);}50%{transform:translateY(-4px);}100%{transform:translateY(0);}}
+    body.light-theme {
+      --bg: #f5f5ff;
+      --bg-elevated: #ffffff;
+      --card: #f3f4ff;
+      --border: #d4d4ff;
+      --text-main: #0f172a;
+      --text-muted: #4b5563;
+      --accent: #2563eb;
+      --accent-soft: rgba(37,99,235,0.18);
+      --accent-strong: #9333ea;
+      --shadow-strong: rgba(148,163,184,0.5);
+    }
 
-section{width:90%;max-width:1000px;margin:34px auto;padding:32px;background:var(--bg2);
-border-radius:20px;border:1px solid var(--border);box-shadow:0 8px 30px rgba(0,0,0,.4);
-transform:translateY(50px);opacity:0;transition:.8s ease-out;}
-section.show{transform:translateY(0);opacity:1;}
-h3{font-size:1.8rem;margin-bottom:16px;color:var(--accent);}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
 
-.skills-scroll{overflow:hidden;white-space:nowrap;margin-top:10px;padding:10px 0;position:relative;}
-.skills-track{display:inline-block;animation:marq 18s linear infinite;}
-@keyframes marq{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-.skill{display:inline-flex;align-items:center;margin-right:40px;font-size:.95rem;}
-.skill img{width:34px;height:34px;margin-right:10px;}
+    /* PARTICLE BACKGROUND */
+    #particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      z-index: -2;
+    }
 
-.logo-box{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;
-justify-content:center;overflow:hidden;background:#fff;box-shadow:0 0 10px rgba(0,0,0,.3);}
+    /* FLOATING SHAPES */
+    .floating-shape {
+      position: fixed;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+      opacity: 0.5;
+      filter: blur(1px);
+      z-index: -1;
+      animation: float 18s ease-in-out infinite alternate;
+    }
 
-.timeline{padding-left:18px;position:relative;}
-.timeline:before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--accent);}
-.item{margin-bottom:28px;padding-left:24px;opacity:0;transform:translateX(40px);transition:.7s;}
-.timeline.show .item{opacity:1;transform:translateX(0);}
-.dot{width:14px;height:14px;border-radius:50%;background:var(--accent);position:absolute;left:4px;top:6px;}
+    .floating-shape.shape-1 {
+      width: 260px;
+      height: 260px;
+      top: 8%;
+      left: 5%;
+      animation-delay: 0s;
+    }
 
-.educard{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:18px;
-transition:.3s;box-shadow:0 10px 24px rgba(0,0,0,.45);}
-.educard:hover{transform:translateY(-6px);border-color:var(--accent);}
+    .floating-shape.shape-2 {
+      width: 320px;
+      height: 320px;
+      bottom: 2%;
+      right: 10%;
+      animation-delay: 4s;
+    }
 
-.projects{display:grid;grid-template-columns:1fr;gap:20px;}
-.card{padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:18px;
-transition:.35s;position:relative;}
-.card:hover{transform:translateY(-6px)scale(1.01);border-color:var(--accent);
-box-shadow:0 0 22px var(--soft);}
-.tag{font-size:.75rem;padding:4px 8px;border-radius:999px;background:rgba(15,23,42,.9);
-border:1px solid var(--accent);color:#bae6fd;margin-right:6px;}
+    .floating-shape.shape-3 {
+      width: 220px;
+      height: 220px;
+      bottom: 40%;
+      left: 35%;
+      animation-delay: 8s;
+    }
 
-footer{text-align:center;padding:30px;color:var(--muted);margin-top:40px;font-size:.85rem;}
+    @keyframes float {
+      0%   { transform: translate3d(0,0,0); }
+      50%  { transform: translate3d(20px,-30px,0); }
+      100% { transform: translate3d(-20px,20px,0); }
+    }
 
-@media(max-width:900px){
-.hero{grid-template-columns:1fr;padding-top:130px;}
-.hero h1{font-size:2.3rem;}
-.nav-links{display:none;}
-}
-</style>
+    /* NAVBAR */
+    nav {
+      width: 100%;
+      padding: 12px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    body.light-theme nav {
+      background: rgba(248,250,252,0.9);
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    nav .nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-toggle {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.7);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.3s;
+    }
+
+    body.light-theme .theme-toggle {
+      background: rgba(255,255,255,0.9);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 150px 24px 110px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      line-height: 1.05;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .hero-text h1 span {
+      color: var(--accent);
+    }
+
+    .hero-text h2 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      min-height: 1.6em;
+      margin-bottom: 16px;
+    }
+
+    .hero-text p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .btn-primary, .btn-ghost {
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      transform-style: preserve-3d;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.7);
+      transform: translateY(-2px) rotate3d(1, -1, 0, 8deg);
+    }
+
+    .hero-socials {
+      display: flex;
+      gap: 14px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--accent);
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--card));
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 0 18px rgba(56,189,248,0.45);
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: icon-float 4s ease-in-out infinite;
+    }
+
+    .icon-btn:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    .icon-btn:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes icon-float {
+      0%   { transform: translateY(0) rotate3d(1,0,0,0deg); }
+      50%  { transform: translateY(-4px) rotate3d(1,1,0,6deg); }
+      100% { transform: translateY(0) rotate3d(0,1,0,0deg); }
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-4px) rotate3d(1,1,0,12deg) scale(1.05);
+      box-shadow: 0 0 28px rgba(56,189,248,0.8);
+    }
+
+    .hero-lottie {
+      width: 100%;
+      max-width: 340px;
+      height: 340px;
+      margin: 0 auto;
+      filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.5));
+      transform-style: preserve-3d;
+      transform: perspective(800px) rotateY(-8deg);
+    }
+
+    /* SECTIONS (scroll reveal) */
+    section {
+      width: 90%;
+      max-width: 1000px;
+      margin: 32px auto;
+      padding: 32px;
+      background: var(--bg-elevated);
+      border-radius: 20px;
+      box-shadow: 0 22px 60px var(--shadow-strong);
+      border: 1px solid var(--border);
+      transform: translateY(50px);
+      opacity: 0;
+      transition: 0.8s ease-out;
+      backdrop-filter: blur(10px);
+    }
+
+    section.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    section p {
+      color: var(--text-muted);
+      font-size: 0.97rem;
+    }
+
+    /* SKILLS MARQUEE */
+    .skills-scroll {
+      overflow: hidden;
+      white-space: nowrap;
+      margin-top: 16px;
+      padding: 10px 0;
+      position: relative;
+    }
+
+    .skills-scroll::before,
+    .skills-scroll::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 80px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .skills-scroll::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg-elevated), transparent);
+    }
+
+    .skills-scroll::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg-elevated), transparent);
+    }
+
+    .skills-track {
+      display: inline-block;
+      animation: scroll 18s linear infinite;
+    }
+
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .skill-item {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 50px;
+      font-size: 0.98rem;
+      color: var(--text-main);
+    }
+
+    .skill-item img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      margin-right: 10px;
+      filter: drop-shadow(0 0 8px rgba(56,189,248,0.5));
+    }
+
+    /* COMPANY / COLLEGE LOGO BOXES */
+    .logo-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #0f172a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #f9fafb;
+      margin-right: 10px;
+      box-shadow: 0 0 14px rgba(15,23,42,0.8);
+      flex-shrink: 0;
+    }
+
+    .logo-gm {
+      background: linear-gradient(135deg, #0046fe, #00a3ff);
+    }
+
+    .logo-vedanta {
+      background: linear-gradient(135deg, #007e3a, #00a0e3);
+    }
+
+    .logo-uconn {
+      background: linear-gradient(135deg, #0b1740, #204c8c);
+    }
+
+    .logo-vnit {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+    }
+
+    /* EXPERIENCE TIMELINE */
+    .timeline {
+      position: relative;
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      opacity: 0.7;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 24px;
+      transform: translateX(30px);
+      opacity: 0;
+      transition: 0.7s ease-out;
+    }
+
+    .timeline.visible .timeline-item {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent), #0b1120);
+      box-shadow: 0 0 12px var(--accent-soft);
+    }
+
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-header-main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .timeline-role {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .timeline-company {
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+
+    .timeline-dates {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-body {
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .timeline-body ul {
+      margin-top: 6px;
+      margin-left: 18px;
+    }
+
+    .timeline-body li {
+      margin-bottom: 4px;
+    }
+
+    /* EDUCATION CARDS (animated like Projects) */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .edu-card {
+      position: relative;
+      padding: 20px 18px;
+      border-radius: 16px;
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--card));
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px var(--shadow-strong);
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      overflow: hidden;
+    }
+
+    .edu-card::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-soft), transparent 60%);
+      top: -50px;
+      right: -50px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-6px) rotate3d(1, -1, 0, 10deg);
+      box-shadow: 0 18px 45px rgba(56,189,248,0.4);
+      border-color: var(--accent);
+    }
+
+    .edu-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .edu-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .edu-subtitle {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .edu-dates {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .edu-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .edu-body ul {
+      margin-top: 6px;
+      margin-left: 18px;
+    }
+
+    /* PROJECT CARDS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--card));
+      padding: 22px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      transition: 0.4s;
+      transform: translateY(12px);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-soft), transparent 60%);
+      top: -60px;
+      right: -60px;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.01) rotate3d(-1, 1, 0, 8deg);
+      box-shadow: 0 0 24px rgba(56,189,248,0.65);
+      border-color: var(--accent);
+    }
+
+    .project-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .project-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--accent);
+      color: #bae6fd;
+    }
+
+    body.light-theme .tag {
+      background: #eef2ff;
+      color: #1e293b;
+    }
+
+    .project-link {
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-muted);
+      margin-top: 40px;
+      font-size: 0.85rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: left;
+        padding-top: 130px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.3rem;
+      }
+
+      nav {
+        padding-inline: 20px;
+      }
+
+      nav .nav-links {
+        display: none; /* simple mobile fallback; can add burger later */
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 22px;
+      }
+
+      .hero {
+        padding-inline: 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- PARTICLE BACKGROUND -->
+  <canvas id="particles"></canvas>
 
-<canvas id="particles"></canvas>
-<div class="fshape f1"></div>
-<div class="fshape f2"></div>
-<div class="fshape f3"></div>
+  <!-- FLOATING SHAPES -->
+  <div class="floating-shape shape-1"></div>
+  <div class="floating-shape shape-2"></div>
+  <div class="floating-shape shape-3"></div>
 
-<nav>
-<div class="logo">DHEERAJ SREE</div>
-<div class="nav-links">
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#exp">Experience</a>
-<a href="#projects">Projects</a>
-<a href="#edu">Education</a>
-</div>
-<button class="theme-btn" id="themeBtn"><span id="ticon">🌙</span></button>
-</nav>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">Dheeraj Sree</div>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle">
+        <span id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark</span>
+      </button>
+    </div>
+  </nav>
 
-<section class="hero show">
-<div>
-<h1>DHEERAJ SREE SANDUPATLA</h1>
-<h2><span id="typed"></span></h2>
-<p>Risk Analyst – Portfolio Forecasting with a strong background in analytics, cloud, and data engineering. I build data-driven solutions that transform portfolio risk signals into actionable insights.</p>
+  <!-- HERO SECTION -->
+  <section class="hero visible">
+    <div class="hero-text">
+      <h1><span>Dheeraj</span> Sree<br/>Sandupatla</h1>
+      <h2><span id="typed"></span></h2>
+      <p>
+        Risk Analyst – Portfolio Forecasting with a background in Mining Engineering and a
+        tech-focused Master’s in Business Analytics & Project Management. I build data, cloud,
+        and analytics solutions that turn portfolio risk into clear, actionable insight.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <div class="hero-socials">
+          <a
+            class="icon-btn"
+            href="https://github.com/dheeraj24797"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            class="icon-btn"
+            href="https://www.linkedin.com/in/dheeraj-sree-sandupatla/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            class="icon-btn"
+            href="mailto:dheeraj.sree222@gmail.com"
+            aria-label="Gmail"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-lottie" id="lottie-hero"></div>
+  </section>
 
-<div class="socials">
-<a href="https://github.com/dheeraj24797" class="sbtn" target="_blank"><i class="fab fa-github"></i></a>
-<a href="https://www.linkedin.com/in/dheeraj-sree-sandupatla" class="sbtn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-<a href="mailto:dheeraj.sree222@gmail.com" class="sbtn"><i class="fa fa-envelope"></i></a>
-</div>
-</div>
+  <!-- ABOUT -->
+  <section id="about">
+    <h3>About Me</h3>
+    <p>
+      I’m Dheeraj, a Risk Analyst in Portfolio Forecasting with a unique blend of domain and tech.
+      I began my career as a Geotechnical Engineer at Vedanta Resources and transitioned into analytics
+      and risk through my Master’s at the University of Connecticut (Data Science concentration).
+      Today, I work on data-driven portfolio forecasting, cloud-based analytics, and decision-support
+      solutions that help financial institutions understand and manage risk with confidence.
+    </p>
+  </section>
 
-<div id="lottie" style="width:320px;height:320px;margin:auto;"></div>
-</section>
+  <!-- SKILLS (infinite scroll line with logos) -->
+  <section id="skills">
+    <h3>Skills</h3>
+    <p>Core tools & technologies I work with:</p>
+    <div class="skills-scroll">
+      <div class="skills-track">
+        <!-- loop 1 -->
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/>Python
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS"/>AWS
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/>Docker
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes"/>Kubernetes
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/>PostgreSQL
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>Git
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"/>Pandas
+        </div>
+        <!-- loop 2 -->
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/>Python
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS"/>AWS
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/>Docker
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes"/>Kubernetes
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/>PostgreSQL
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/>Git
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"/>Pandas
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="about"><h3>About Me</h3>
-<p>I’m Dheeraj, a Portfolio Forecasting Analyst working at the intersection of risk, cloud engineering, and predictive analytics. With experience spanning corporate risk, BI engineering, and industrial analytics, I specialize in transforming large-scale financial datasets into insights that support strategic decisions.</p>
-</section>
+  <!-- EXPERIENCE (Animated timeline with logos) -->
+  <section id="experience">
+    <h3>Experience</h3>
+    <div class="timeline">
+      <!-- GM Financial -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div class="logo-box logo-gm">GM</div>
+          <div class="timeline-header-main">
+            <span class="timeline-role">Risk Analyst – Portfolio Forecasting</span>
+            <span class="timeline-company">@ GM Financial</span>
+            <span class="timeline-dates">Nov 2023 – Present</span>
+          </div>
+        </div>
+        <div class="timeline-body">
+          <p>
+            Working in portfolio forecasting and risk analytics, leveraging programming, cloud, and BI tools
+            to support decision-making across the auto finance portfolio.
+          </p>
+          <ul>
+            <li>Build and maintain analytical solutions to monitor portfolio performance and risk trends.</li>
+            <li>Collaborate with cross-functional teams to translate business questions into data-driven insights.</li>
+            <li>Use tools like Python, SQL, and visualization platforms to summarize complex portfolio behavior.</li>
+          </ul>
+        </div>
+      </div>
 
-<section id="skills"><h3>Skills</h3>
-<div class="skills-scroll">
-<div class="skills-track">
-<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">Python</span>
-<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg">AWS</span>
-<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg">Docker</span>
-<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg">Kubernetes</span>
-<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">Git</span>
-<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg">PostgreSQL</span>
-<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg">Pandas</span>
-</div>
-</div>
-</section>
+      <!-- Vedanta -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div class="logo-box logo-vedanta">VR</div>
+          <div class="timeline-header-main">
+            <span class="timeline-role">Geotechnical Engineer</span>
+            <span class="timeline-company">@ Vedanta Resources</span>
+            <span class="timeline-dates">Jun 2019 – Apr 2021</span>
+          </div>
+        </div>
+        <div class="timeline-body">
+          <p>
+            Started my career in a high-impact operations environment and naturally gravitated to analytics,
+            automation, and performance tracking.
+          </p>
+          <ul>
+            <li>Optimized support quality and cycle time using Six Sigma techniques, saving ~25 hours/week and generating ~$2M in annual savings, presenting findings to the CEO.</li>
+            <li>Developed an automated Excel-based training tracking system that achieved 80% compliance within three months by monitoring training records and notifying managers of overdue courses.</li>
+            <li>Built weekly-refreshing Tableau dashboards to provide HQ with real-time performance data, reducing manual status checks and saving 8 hours weekly.</li>
+            <li>Collected and analyzed data from multiple locations, creating visually compelling Tableau dashboards that improved productivity and efficiency.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="exp">
-<h3>Experience</h3>
-<div class="timeline">
-<div class="item">
-<div class="dot"></div>
-<div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/3/36/GM_Financial_logo.svg"></div>
-<h4>Risk Analyst – Portfolio Forecasting</h4>
-<p>GM Financial (Nov 2023 – Present)</p>
-<ul>
-<li>Develop forecasting insights for portfolio risk and credit performance.</li>
-<li>Build automated analytics workflows in Python & SQL.</li>
-<li>Collaborate with cross-functional teams to drive strategic decisions.</li>
-</ul>
-</div>
+  <!-- PROJECTS (animated 3D cards) -->
+  <section id="projects">
+    <h3>Projects</h3>
+    <div class="projects-grid">
+      <!-- Placeholder projects – you can replace text & links -->
+      <div class="project-card">
+        <h4>Portfolio Forecasting Dashboard</h4>
+        <p>
+          End-to-end analytics view for portfolio performance: integrates risk metrics, delinquency trends, and
+          forecasting outputs into a single interactive dashboard.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Risk Analytics</span>
+        </div>
+        <a href="#" class="project-link">View project →</a>
+      </div>
 
-<div class="item">
-<div class="dot"></div>
-<div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Vedanta_Limited_logo.png"></div>
-<h4>Geotechnical Engineer</h4>
-<p>Vedanta Resources (Jun 2019 – Apr 2021)</p>
-<ul>
-<li>Implemented Six Sigma improvements saving $2M/year.</li>
-<li>Built Tableau dashboards reducing manual reporting by 8 hours weekly.</li>
-<li>Created automated training tracking system achieving 80% compliance.</li>
-</ul>
-</div>
-</div>
-</section>
+      <div class="project-card">
+        <h4>Credit Risk Simulation Engine</h4>
+        <p>
+          Simulated different macroeconomic and portfolio scenarios to study credit risk sensitivity and support
+          what-if analysis for leadership.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">Pandas</span>
+        </div>
+        <a href="#" class="project-link">View project →</a>
+      </div>
 
-<section id="projects">
-<h3>Projects</h3>
-<div class="projects">
-<div class="card">
-<h4>Portfolio Forecasting Dashboard</h4>
-<p>Interactive risk and performance dashboard combining macro, credit, and delinquency signals.</p>
-<div><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">SQL</span></div>
-</div>
+      <div class="project-card">
+        <h4>Cloud ETL for Risk Analytics</h4>
+        <p>
+          Designed a cloud-based ETL pattern to ingest, clean, and aggregate loan-level data into analytics-ready
+          layers for downstream reporting and modeling.
+        </p>
+        <div class="project-tags">
+          <span class="tag">AWS</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">SQL</span>
+        </div>
+        <a href="#" class="project-link">View project →</a>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h4>Risk Simulation Engine</h4>
-<p>Scenario modeling engine built using Python & scikit-learn.</p>
-<div><span class="tag">Python</span><span class="tag">scikit-learn</span></div>
-</div>
+  <!-- EDUCATION (Master highlighted, B.Tech respected, both animated) -->
+  <section id="education">
+    <h3>Education</h3>
+    <div class="edu-grid">
+      <!-- Masters -->
+      <div class="edu-card">
+        <div class="edu-header">
+          <div class="logo-box logo-uconn">UC</div>
+          <div>
+            <div class="edu-title">
+              Master’s in Business Analytics & Project Management (Data Science Concentration)
+            </div>
+            <div class="edu-subtitle">
+              University of Connecticut, School of Business
+            </div>
+          </div>
+        </div>
+        <div class="edu-dates">
+          Jan 2022 – May 2023 • GPA: 3.92 / 4.0
+        </div>
+        <div class="edu-body">
+          <p>
+            Graduate program that formalized my transition into tech and analytics, with a strong focus
+            on data science, cloud, and decision modeling.
+          </p>
+          <ul>
+            <li>Big Data Using Cloud Computing</li>
+            <li>Data Science Using Python</li>
+            <li>Data Mining and Business Intelligence</li>
+            <li>Business Decision Modeling & Predictive Modeling</li>
+            <li>Business Process Modeling and Data Management</li>
+            <li>Statistics in Business Analytics Using R</li>
+            <li>Introduction to Project Management</li>
+            <li>Project Risk and Agile Methodologies</li>
+            <li>Project Leadership and Communication</li>
+          </ul>
+        </div>
+      </div>
 
-<div class="card">
-<h4>Cloud ETL for Risk Analytics</h4>
-<p>AWS-based data ingestion pipeline for portfolio datasets.</p>
-<div><span class="tag">AWS</span><span class="tag">Docker</span></div>
-</div>
-</div>
-</section>
+      <!-- B.Tech -->
+      <div class="edu-card">
+        <div class="edu-header">
+          <div class="logo-box logo-vnit">VN</div>
+          <div>
+            <div class="edu-title">
+              Bachelor of Technology (B.Tech), Mining Engineering
+            </div>
+            <div class="edu-subtitle">
+              Visvesvaraya National Institute of Technology (VNIT), Nagpur
+            </div>
+          </div>
+        </div>
+        <div class="edu-dates">
+          2015 – 2019
+        </div>
+        <div class="edu-body">
+          <p>
+            Rigorous engineering foundation from one of India’s premier institutes, shaping my
+            quantitative thinking and structured problem-solving approach.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="edu">
-<h3>Education</h3>
+  <footer>
+    © 2025 Dheeraj Sree Sandupatla. All Rights Reserved.
+  </footer>
 
-<div class="educard">
-<div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/UConn_Huskies_logo.svg"></div>
-<h4>Master’s in Business Analytics & Project Management</h4>
-<p>University of Connecticut (Jan 2022 – May 2023) • GPA 3.92 / 4.0</p>
-<ul>
-<li>Data Science Using Python</li>
-<li>Big Data Using Cloud Computing</li>
-<li>Predictive Modeling</li>
-<li>Statistics using R</li>
-<li>Data Mining & BI</li>
-</ul>
-</div>
+  <script>
+    /* THEME SWITCH */
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
 
-<div class="educard">
-<div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/en/4/42/VNIT_Nagpur_Logo.png"></div>
-<h4>B.Tech in Mining Engineering</h4>
-<p>Visvesvaraya National Institute of Technology (2015–2019)</p>
-</div>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      body.classList.add('light-theme');
+      themeIcon.textContent = '🌞';
+      themeLabel.textContent = 'Light';
+    }
 
-</section>
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-theme');
+      const isLight = body.classList.contains('light-theme');
+      themeIcon.textContent = isLight ? '🌞' : '🌙';
+      themeLabel.textContent = isLight ? 'Light' : 'Dark';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
 
-<footer>© 2025 Dheeraj Sree Sandupatla</footer>
+    /* TYPED TEXT ANIMATION */
+    new Typed('#typed', {
+      strings: [
+        'Risk Analyst – Portfolio Forecasting',
+        'Business Analytics & Data Science',
+        'Mining Engineer turned Techie',
+        'Turning Data Into Decisions'
+      ],
+      typeSpeed: 45,
+      backSpeed: 25,
+      backDelay: 1300,
+      loop: true
+    });
 
-<script>
-// Theme toggle
-const tbtn=document.getElementById("themeBtn"),ticon=document.getElementById("ticon");
-tbtn.onclick=()=>{document.body.classList.toggle("light");
-ticon.textContent=document.body.classList.contains("light")?"🌞":"🌙";};
+    /* LOTTIE HERO AVATAR */
+    lottie.loadAnimation({
+      container: document.getElementById('lottie-hero'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      // Sample avatar-style animation; you can swap this JSON URL later
+      path: 'https://assets7.lottiefiles.com/packages/lf20_9zhvyj7f.json'
+    });
 
-// Typed
-new Typed("#typed",{strings:[
-"Risk Analyst – Portfolio Forecasting",
-"Data Engineering & Cloud Analytics",
-"Business Analytics & Modeling"
-],typeSpeed:45,backSpeed:25,backDelay:1200,loop:true});
+    /* SCROLL-BASED SECTION REVEAL + TIMELINE ANIMATION */
+    const sections = document.querySelectorAll('section');
+    const timeline = document.querySelector('.timeline');
 
-// Lottie
-lottie.loadAnimation({
-container:document.getElementById("lottie"),
-renderer:"svg",loop:true,autoplay:true,
-path:"https://assets7.lottiefiles.com/packages/lf20_9zhvyj7f.json"
-});
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            if (entry.target === timeline?.parentElement) {
+              timeline.classList.add('visible');
+            }
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-// Scroll reveal
-const secs=document.querySelectorAll("section");
-const ob=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show");});
-},{threshold:0.2});
-secs.forEach(s=>ob.observe(s));
+    sections.forEach((sec) => observer.observe(sec));
 
-// Timeline animation
-const tline=document.querySelector(".timeline");
-const tobs=new IntersectionObserver(e=>{
-if(e[0].isIntersecting)tline.classList.add("show");
-},{threshold:0.2});
-tobs.observe(tline);
+    /* NEON PARTICLE BACKGROUND WITH MOUSE REACTIVITY */
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleCount = 80;
+    const mouse = { x: null, y: null };
 
-// Particle background
-const c=document.getElementById("particles"),ctx=c.getContext("2d");
-let P=[],count=70,mouse={x:null,y:null};
-function resize(){c.width=innerWidth;c.height=innerHeight;}
-onresize=resize;resize();
-onmousemove=e=>{mouse.x=e.clientX;mouse.y=e.clientY;}
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-function init(){
-P=[];
-for(let i=0;i<count;i++)P.push({
-x:Math.random()*c.width,y:Math.random()*c.height,
-vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6,r:Math.random()*2+1
-});
-}
-function draw(){
-ctx.clearRect(0,0,c.width,c.height);
-for(let p of P){
-p.x+=p.vx;p.y+=p.vy;
-if(p.x<0)p.x=c.width;if(p.x>c.width)p.x=0;
-if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;
-let r=p.r;
-if(mouse.x){
-let dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);
-if(dist<130){r+=1.4;}
-}
-ctx.beginPath();
-ctx.arc(p.x,p.y,r,0,2*Math.PI);
-ctx.fillStyle=getComputedStyle(document.body).getPropertyValue("--accent");
-ctx.fill();
-}
-requestAnimationFrame(draw);
-}
-init();draw();
-</script>
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    function createParticles() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          radius: Math.random() * 2 + 1
+        });
+      }
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg');
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const accentColor = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#38bdf8';
+
+      for (let p of particles) {
+        // Move
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap around edges
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        // Mouse interaction
+        let glowRadius = p.radius;
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 140) {
+            // Slight repulsion
+            p.x += dx * 0.01;
+            p.y += dy * 0.01;
+            // Extra glow
+            glowRadius = p.radius + (140 - dist) / 70;
+          }
+        }
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, glowRadius, 0, Math.PI * 2);
+        ctx.fillStyle = accentColor;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = accentColor;
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      // Draw connecting lines
+      ctx.lineWidth = 0.4;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            const alpha = 1 - dist / 130;
+            ctx.strokeStyle = `rgba(148, 163, 184, ${alpha})`;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    createParticles();
+    drawParticles();
+  </script>
 </body>
 </html>
