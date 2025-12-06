@@ -1,1 +1,299 @@
-<html><body>Placeholder updated HTML will go here. ChatGPT cannot include full long HTML in analysis due to token limit placeholder.</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dheeraj Sree Sandupatla | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+--bg:#020617;--bg2:rgba(15,23,42,0.9);--text:#e2e8f0;--muted:#94a3b8;
+--accent:#38bdf8;--accent2:#818cf8;--border:#1f2937;--soft:rgba(56,189,248,0.25);
+}
+body.light{--bg:#f4f6ff;--bg2:#ffffff;--text:#0f172a;--muted:#52525b;
+--accent:#2563eb;--accent2:#9333ea;--border:#d4d4ff;--soft:rgba(37,99,235,0.15);}
+body{font-family:Poppins;background:var(--bg);color:var(--text);transition:.3s;overflow-x:hidden;}
+
+#particles{position:fixed;width:100%;height:100%;top:0;left:0;z-index:-3;}
+
+.fshape{position:fixed;border-radius:999px;background:radial-gradient(circle,var(--soft),transparent 70%);
+opacity:.45;filter:blur(1px);z-index:-2;animation:float 18s ease-in-out infinite alternate;}
+.f1{width:260px;height:260px;top:8%;left:5%;}
+.f2{width:320px;height:320px;right:10%;bottom:4%;animation-delay:3s;}
+.f3{width:220px;height:220px;left:35%;bottom:40%;animation-delay:6s;}
+@keyframes float{0%{transform:translate(0,0);}50%{transform:translate(20px,-30px);}
+100%{transform:translate(-20px,20px);}}
+
+nav{position:fixed;width:100%;top:0;padding:14px 40px;background:var(--bg2);backdrop-filter:blur(12px);
+display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);z-index:20;}
+.logo{font-size:1rem;font-weight:700;letter-spacing:.07em;color:var(--accent);}
+.nav-links a{text-decoration:none;margin-left:24px;font-size:.95rem;color:var(--text);transition:.3s;}
+.nav-links a:hover{color:var(--accent);}
+.theme-btn{padding:6px 14px;border-radius:999px;border:1px solid var(--border);background:var(--bg2);
+color:var(--text);cursor:pointer;display:flex;gap:6px;align-items:center;transition:.3s;}
+.theme-btn:hover{border-color:var(--accent);}
+
+.hero{padding:150px 24px 110px;max-width:1100px;margin:auto;display:grid;
+grid-template-columns:1.6fr 1fr;gap:40px;align-items:center;}
+.hero h1{font-size:3rem;line-height:1.05;margin-bottom:4px;color:var(--accent);}
+.hero h2{font-size:1.2rem;color:var(--accent);min-height:1.5em;margin-bottom:12px;}
+.hero p{font-size:1rem;color:var(--muted);max-width:520px;margin-bottom:20px;}
+
+.socials{display:flex;gap:16px;margin-top:16px;}
+.sbtn{width:44px;height:44px;border-radius:14px;border:1px solid var(--accent);font-size:1.3rem;
+display:flex;align-items:center;justify-content:center;color:var(--accent);
+background:radial-gradient(circle,var(--soft),var(--bg));box-shadow:0 0 18px var(--soft);
+transition:.3s;animation:ficon 4s infinite ease-in-out;}
+.sbtn:hover{transform:translateY(-4px)scale(1.06);}
+@keyframes ficon{0%{transform:translateY(0);}50%{transform:translateY(-4px);}100%{transform:translateY(0);}}
+
+section{width:90%;max-width:1000px;margin:34px auto;padding:32px;background:var(--bg2);
+border-radius:20px;border:1px solid var(--border);box-shadow:0 8px 30px rgba(0,0,0,.4);
+transform:translateY(50px);opacity:0;transition:.8s ease-out;}
+section.show{transform:translateY(0);opacity:1;}
+h3{font-size:1.8rem;margin-bottom:16px;color:var(--accent);}
+
+.skills-scroll{overflow:hidden;white-space:nowrap;margin-top:10px;padding:10px 0;position:relative;}
+.skills-track{display:inline-block;animation:marq 18s linear infinite;}
+@keyframes marq{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.skill{display:inline-flex;align-items:center;margin-right:40px;font-size:.95rem;}
+.skill img{width:34px;height:34px;margin-right:10px;}
+
+.logo-box{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;
+justify-content:center;overflow:hidden;background:#fff;box-shadow:0 0 10px rgba(0,0,0,.3);}
+
+.timeline{padding-left:18px;position:relative;}
+.timeline:before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--accent);}
+.item{margin-bottom:28px;padding-left:24px;opacity:0;transform:translateX(40px);transition:.7s;}
+.timeline.show .item{opacity:1;transform:translateX(0);}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--accent);position:absolute;left:4px;top:6px;}
+
+.educard{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:18px;
+transition:.3s;box-shadow:0 10px 24px rgba(0,0,0,.45);}
+.educard:hover{transform:translateY(-6px);border-color:var(--accent);}
+
+.projects{display:grid;grid-template-columns:1fr;gap:20px;}
+.card{padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:18px;
+transition:.35s;position:relative;}
+.card:hover{transform:translateY(-6px)scale(1.01);border-color:var(--accent);
+box-shadow:0 0 22px var(--soft);}
+.tag{font-size:.75rem;padding:4px 8px;border-radius:999px;background:rgba(15,23,42,.9);
+border:1px solid var(--accent);color:#bae6fd;margin-right:6px;}
+
+footer{text-align:center;padding:30px;color:var(--muted);margin-top:40px;font-size:.85rem;}
+
+@media(max-width:900px){
+.hero{grid-template-columns:1fr;padding-top:130px;}
+.hero h1{font-size:2.3rem;}
+.nav-links{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+<div class="fshape f1"></div>
+<div class="fshape f2"></div>
+<div class="fshape f3"></div>
+
+<nav>
+<div class="logo">DHEERAJ SREE</div>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#exp">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#edu">Education</a>
+</div>
+<button class="theme-btn" id="themeBtn"><span id="ticon">🌙</span></button>
+</nav>
+
+<section class="hero show">
+<div>
+<h1>DHEERAJ SREE SANDUPATLA</h1>
+<h2><span id="typed"></span></h2>
+<p>Risk Analyst – Portfolio Forecasting with a strong background in analytics, cloud, and data engineering. I build data-driven solutions that transform portfolio risk signals into actionable insights.</p>
+
+<div class="socials">
+<a href="https://github.com/dheeraj24797" class="sbtn" target="_blank"><i class="fab fa-github"></i></a>
+<a href="https://www.linkedin.com/in/dheeraj-sree-sandupatla" class="sbtn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+<a href="mailto:dheeraj.sree222@gmail.com" class="sbtn"><i class="fa fa-envelope"></i></a>
+</div>
+</div>
+
+<div id="lottie" style="width:320px;height:320px;margin:auto;"></div>
+</section>
+
+<section id="about"><h3>About Me</h3>
+<p>I’m Dheeraj, a Portfolio Forecasting Analyst working at the intersection of risk, cloud engineering, and predictive analytics. With experience spanning corporate risk, BI engineering, and industrial analytics, I specialize in transforming large-scale financial datasets into insights that support strategic decisions.</p>
+</section>
+
+<section id="skills"><h3>Skills</h3>
+<div class="skills-scroll">
+<div class="skills-track">
+<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">Python</span>
+<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg">AWS</span>
+<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg">Docker</span>
+<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg">Kubernetes</span>
+<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">Git</span>
+<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg">PostgreSQL</span>
+<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg">Pandas</span>
+</div>
+</div>
+</section>
+
+<section id="exp">
+<h3>Experience</h3>
+<div class="timeline">
+<div class="item">
+<div class="dot"></div>
+<div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/3/36/GM_Financial_logo.svg"></div>
+<h4>Risk Analyst – Portfolio Forecasting</h4>
+<p>GM Financial (Nov 2023 – Present)</p>
+<ul>
+<li>Develop forecasting insights for portfolio risk and credit performance.</li>
+<li>Build automated analytics workflows in Python & SQL.</li>
+<li>Collaborate with cross-functional teams to drive strategic decisions.</li>
+</ul>
+</div>
+
+<div class="item">
+<div class="dot"></div>
+<div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Vedanta_Limited_logo.png"></div>
+<h4>Geotechnical Engineer</h4>
+<p>Vedanta Resources (Jun 2019 – Apr 2021)</p>
+<ul>
+<li>Implemented Six Sigma improvements saving $2M/year.</li>
+<li>Built Tableau dashboards reducing manual reporting by 8 hours weekly.</li>
+<li>Created automated training tracking system achieving 80% compliance.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<h3>Projects</h3>
+<div class="projects">
+<div class="card">
+<h4>Portfolio Forecasting Dashboard</h4>
+<p>Interactive risk and performance dashboard combining macro, credit, and delinquency signals.</p>
+<div><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">SQL</span></div>
+</div>
+
+<div class="card">
+<h4>Risk Simulation Engine</h4>
+<p>Scenario modeling engine built using Python & scikit-learn.</p>
+<div><span class="tag">Python</span><span class="tag">scikit-learn</span></div>
+</div>
+
+<div class="card">
+<h4>Cloud ETL for Risk Analytics</h4>
+<p>AWS-based data ingestion pipeline for portfolio datasets.</p>
+<div><span class="tag">AWS</span><span class="tag">Docker</span></div>
+</div>
+</div>
+</section>
+
+<section id="edu">
+<h3>Education</h3>
+
+<div class="educard">
+<div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/UConn_Huskies_logo.svg"></div>
+<h4>Master’s in Business Analytics & Project Management</h4>
+<p>University of Connecticut (Jan 2022 – May 2023) • GPA 3.92 / 4.0</p>
+<ul>
+<li>Data Science Using Python</li>
+<li>Big Data Using Cloud Computing</li>
+<li>Predictive Modeling</li>
+<li>Statistics using R</li>
+<li>Data Mining & BI</li>
+</ul>
+</div>
+
+<div class="educard">
+<div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/en/4/42/VNIT_Nagpur_Logo.png"></div>
+<h4>B.Tech in Mining Engineering</h4>
+<p>Visvesvaraya National Institute of Technology (2015–2019)</p>
+</div>
+
+</section>
+
+<footer>© 2025 Dheeraj Sree Sandupatla</footer>
+
+<script>
+// Theme toggle
+const tbtn=document.getElementById("themeBtn"),ticon=document.getElementById("ticon");
+tbtn.onclick=()=>{document.body.classList.toggle("light");
+ticon.textContent=document.body.classList.contains("light")?"🌞":"🌙";};
+
+// Typed
+new Typed("#typed",{strings:[
+"Risk Analyst – Portfolio Forecasting",
+"Data Engineering & Cloud Analytics",
+"Business Analytics & Modeling"
+],typeSpeed:45,backSpeed:25,backDelay:1200,loop:true});
+
+// Lottie
+lottie.loadAnimation({
+container:document.getElementById("lottie"),
+renderer:"svg",loop:true,autoplay:true,
+path:"https://assets7.lottiefiles.com/packages/lf20_9zhvyj7f.json"
+});
+
+// Scroll reveal
+const secs=document.querySelectorAll("section");
+const ob=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show");});
+},{threshold:0.2});
+secs.forEach(s=>ob.observe(s));
+
+// Timeline animation
+const tline=document.querySelector(".timeline");
+const tobs=new IntersectionObserver(e=>{
+if(e[0].isIntersecting)tline.classList.add("show");
+},{threshold:0.2});
+tobs.observe(tline);
+
+// Particle background
+const c=document.getElementById("particles"),ctx=c.getContext("2d");
+let P=[],count=70,mouse={x:null,y:null};
+function resize(){c.width=innerWidth;c.height=innerHeight;}
+onresize=resize;resize();
+onmousemove=e=>{mouse.x=e.clientX;mouse.y=e.clientY;}
+
+function init(){
+P=[];
+for(let i=0;i<count;i++)P.push({
+x:Math.random()*c.width,y:Math.random()*c.height,
+vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6,r:Math.random()*2+1
+});
+}
+function draw(){
+ctx.clearRect(0,0,c.width,c.height);
+for(let p of P){
+p.x+=p.vx;p.y+=p.vy;
+if(p.x<0)p.x=c.width;if(p.x>c.width)p.x=0;
+if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;
+let r=p.r;
+if(mouse.x){
+let dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);
+if(dist<130){r+=1.4;}
+}
+ctx.beginPath();
+ctx.arc(p.x,p.y,r,0,2*Math.PI);
+ctx.fillStyle=getComputedStyle(document.body).getPropertyValue("--accent");
+ctx.fill();
+}
+requestAnimationFrame(draw);
+}
+init();draw();
+</script>
+</body>
+</html>
